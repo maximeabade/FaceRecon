@@ -1,3 +1,3 @@
-photos visage détouré toutes au meme format 1000*1000 pixels et en .png
+photos visage détouré toutes au meme format 1000*1000 pixels et en .png ==> DONE
 
-detoureur automatique en python
+detoureur automatique en python  ==> DONE
