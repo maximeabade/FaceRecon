@@ -1,0 +1,7 @@
+*.png
+*.jpg
+*.jpeg
+./images/definitives/*
+./images/originals/*
+idea.txt
+todo.txt²
