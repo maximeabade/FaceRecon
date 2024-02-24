@@ -1,7 +1,7 @@
 ## DANS L ORDRE DU TRAITEMENT
 
 1 - recalcul de l image moyenne avec la commande 
-``` python3 learner.py ```
+``` python3 learner.py ```  --> fonction is done --> learn()
 
 2 - pour lancer l'apprentissage avec la base de test (dans ./images/test/ACCEPTEES et ./images/test/REFUSEES), lancer la commande  
 ``` python3 comparer.py  ```

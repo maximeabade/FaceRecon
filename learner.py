@@ -2,51 +2,61 @@ import os
 import cv2
 import numpy as np
 
-path = './images/definitives/'
+def learn ():
 
-mesImages = []
+    path = './images/definitives/'
 
-myList = os.listdir(path)
+    ## degager l ancienne image moyenne
+    try:
+        os.remove(path + 'averageImage.jpg')
+    except:
+        pass
 
-print(myList)
+    mesImages = []
 
-# ANALYSIS OF THE PICTURES IN DATABASE
+    myList = os.listdir(path)
 
-# CREATION de l'image moyenne depuis les images de la base de données
+    print(myList)
 
-# Conversion en nuances de gris
+    # ANALYSIS OF THE PICTURES IN DATABASE
 
-# Taille spécifiée pour l'image moyenne
-target_size = (1000, 1000)
+    # CREATION de l'image moyenne depuis les images de la base de données
 
-# Créons une image comme tableau de pixels tous à 0 de taille 1000x1000
-averageImage = np.zeros(target_size, np.float32)
+    # Conversion en nuances de gris
 
-# Compteur pour suivre le nombre total d'images
-count = 0
+    # Taille spécifiée pour l'image moyenne
+    target_size = (1000, 1000)
 
-# Boucle sur toutes les images
-for img in myList:
-    # Chemin d'accès à l'image
-    current_image_path = os.path.join(path, img)
+    # Créons une image comme tableau de pixels tous à 0 de taille 1000x1000
+    averageImage = np.zeros(target_size, np.float32)
 
-    # Lecture de l'image en nuances de gris
-    current_image = cv2.imread(current_image_path, cv2.IMREAD_GRAYSCALE)
+    # Compteur pour suivre le nombre total d'images
+    count = 0
 
-    # Ajout de l'image actuelle à l'image moyenne
-    averageImage = cv2.add(averageImage, current_image.astype(np.float32))
+    # Boucle sur toutes les images
+    for img in myList:
+        # Chemin d'accès à l'image
+        current_image_path = os.path.join(path, img)
 
-    # Incrémentation du compteur
-    count += 1
+        # Lecture de l'image en nuances de gris
+        current_image = cv2.imread(current_image_path, cv2.IMREAD_GRAYSCALE)
 
-# Pour chaque pixel de l'image moyenne, on divise sa nuance de gris par le nombre total d'images
-print(count)
-averageImage = (averageImage / count).astype(np.uint8)
-print(averageImage)
+        # Ajout de l'image actuelle à l'image moyenne
+        averageImage = cv2.add(averageImage, current_image.astype(np.float32))
 
-# Affichage ou enregistrement de l'image moyenne
-cv2.imshow('Average Image', averageImage)
-cv2.imwrite('./images/definitives/averageImage.jpg', averageImage)
-## enregistrement de l image dans le dossier ./images/definitives comme averageImage.jpg
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+        # Incrémentation du compteur
+        count += 1
+
+    # Pour chaque pixel de l'image moyenne, on divise sa nuance de gris par le nombre total d'images
+    #print(count)
+    averageImage = (averageImage / count).astype(np.uint8)
+    #print(averageImage)
+
+    # Affichage ou enregistrement de l'image moyenne
+    #cv2.imshow('Average Image', averageImage)
+    cv2.imwrite('./images/definitives/averageImage.jpg', averageImage)
+    ## enregistrement de l image dans le dossier ./images/definitives comme averageImage.jpg
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
+    
+learn()
