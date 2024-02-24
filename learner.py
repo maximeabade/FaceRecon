@@ -46,8 +46,7 @@ print(averageImage)
 
 # Affichage ou enregistrement de l'image moyenne
 cv2.imshow('Average Image', averageImage)
-cv2.imwrite('averageImage.png', averageImage)
-## enregistrement de l image dans le dossier ./images/definitives comme averageImage.jpg
 cv2.imwrite('./images/definitives/averageImage.jpg', averageImage)
+## enregistrement de l image dans le dossier ./images/definitives comme averageImage.jpg
 cv2.waitKey(0)
 cv2.destroyAllWindows()

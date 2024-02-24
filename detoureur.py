@@ -29,7 +29,7 @@ def detect_and_extract_face(image_path, output_path):
 
   # Si aucun visage n'est détecté, on quitte la fonction
   if len(faces) == 0:
-    print("Aucun visage détecté.")
+    # print("Aucun visage détecté.")
     return
 
   # On extrait le premier visage détecté
@@ -56,7 +56,7 @@ def detect_and_extract_face(image_path, output_path):
   # Enregistrement de l'image du visage
   cv2.imwrite(output_path, face_image)
 
-  print("Visage extrait avec succès.")
+  # print("Visage extrait avec succès.")
 
 
 

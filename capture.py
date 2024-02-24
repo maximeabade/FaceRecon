@@ -1,0 +1,2 @@
+## Dans ce fichier, on utilise la webcam de l appareil pour prendre des photos et les enregistrer dans un dossier temporaire
+## TANTQUE le temps maximum 10 secondes n est pas ecoulé && que l image prise ne donne pas de resultat positif avec le traitement precedent, toutes les 0.5 secondes, une photo est prise et enregistrée dans le dossier ./images/temp
