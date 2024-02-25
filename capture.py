@@ -13,7 +13,7 @@ from matplotlib import pyplot as plt
 
 
 
-def capture_et_reconnaissance(authorizedDelta=12):
+def capture_et_reconnaissance(authorizedDelta=15):
     """
     Fonction qui gère la capture d'images et la reconnaissance faciale.
 
@@ -48,9 +48,17 @@ def capture_et_reconnaissance(authorizedDelta=12):
             start_w = (w - target_width) // 2
             return image[start_h:start_h + target_height, start_w:start_w + target_width]
 
-        # On crée une fenêtre pour l'affichage en temps réel
-    cv2.namedWindow("Webcam Feed", cv2.WINDOW_NORMAL)
+    '''    # On crée une fenêtre pour l'affichage en temps réel
+    cv2.namedWindow("flash", cv2.WINDOW_NORMAL)
     confusion_matrix_globale = np.zeros((2, 2), dtype=int)
+    #  On crée une fenêtre blanche en plein écran pour simuler un flash
+    cv2.namedWindow("flash", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty("flash", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    flash_image = np.ones((1080, 1920), dtype=np.uint8) * 255  # Crée une image blanche
+    cv2.imshow("flash", flash_image)
+    cv2.waitKey(1000)  # Attendre pendant 1 seconde (ajustez le délai selon vos besoins)
+    '''
+
 
     while datetime.now() - start < timedelta(seconds=10) and output == False:
             # On prend une photo

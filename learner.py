@@ -30,7 +30,7 @@ def learn():
     radius_x, radius_y = 300, 900
     mask = np.zeros_like(averageImage)
     cv2.ellipse(mask, (center_x, center_y), (radius_x, radius_y), 0, 0, 360, 255, thickness=cv2.FILLED)
-    averageImage = cv2.subtract(averageImage, 90 * (mask / 255).astype(np.uint8))
+    averageImage = cv2.subtract(averageImage, 50 * (mask / 255).astype(np.uint8))
 
     cv2.imwrite(os.path.join(path, 'averageImage.jpg'), averageImage)
 
