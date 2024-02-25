@@ -3,6 +3,7 @@
 *.jpeg
 ./images/definitives/*
 ./images/originals/*
+./images/test/*
 idea.txt
 todo.txt
 .env

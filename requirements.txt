@@ -1,0 +1,12 @@
+os
+playsound
+time
+cv2
+numpy
+concurrent.futures
+imghdr
+pandas 
+dotenv
+datetime
+imutils.video
+matplotlib

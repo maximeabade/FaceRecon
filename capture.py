@@ -1,7 +1,6 @@
 
 import cv2
 import os
-import time
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
