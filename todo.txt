@@ -1,3 +1,0 @@
- FAIRE DES FONCTIONS QUI PUISSENT S APPELER pour etre plus clair je voudrais que le programme puisse appeler une fonction qui se trouve dans un autre fichier, plutot que du deroulement lineaire du programme.
-
- en publique et bien choppable, le path vers l image moyenne : path = './images/definitives/averageImage.jpg'

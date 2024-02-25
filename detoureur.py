@@ -80,4 +80,4 @@ def looper(input_path, output_path):
         detect_and_extract_face(image_path, output_file)
 
 # Appel de looper
-looper('./images/originals/', './images/definitives/')
+looper('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/originals/', '/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/')

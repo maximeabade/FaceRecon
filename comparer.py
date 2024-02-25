@@ -16,9 +16,9 @@ authorizedDelta = 15
 
 # path to test images
 # good images
-pathGood = './images/test/ACCEPTEES/'
+pathGood = '/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/test/ACCEPTEES/'
 # bad images
-pathBad = './images/test/REFUSEES/'
+pathBad = '/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/test/REFUSEES/'
 
 ## ON COMMENCE PAR LES BONNES IMAGES
 # on charge l'image moyenne
@@ -157,8 +157,8 @@ for img in myListGood:
     
     ## on veut que si l image est correcte elle soit copiée dans le dossier ./images/definitives, avec verification ava,t de sy elle s y trouve ou non
     if error_roi <= authorizedDelta:
-        if not os.path.exists('./images/definitives/' + img):
-            cv2.imwrite('./images/definitives/' + img, current_image_face)
+        if not os.path.exists('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/' + img):
+            cv2.imwrite('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/' + img, current_image_face)
 
     
 

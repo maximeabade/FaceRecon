@@ -69,7 +69,7 @@ def capture_et_reconnaissance(authorizedDelta=20):
 
             # On sauvegarde l'image dans le dossier ./images/temp
             timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
-            image_path = f'./images/temp/image_{timestamp}.png'
+            image_path = f'/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/image_{timestamp}.png'
             cv2.imwrite(image_path, current_image)
 
             # On incrémente le nombre de photos prises
