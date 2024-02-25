@@ -10,7 +10,13 @@ def main():
 
     os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
 
-    if not result:
+            
+    if result:
+        ##print("Bienvenue à la maison, Maxime !")
+        playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
+
+
+    elif not result:
         ##print("Intrus détecté")
         ## for 10 seconds play the alarm sound
         start_time = time.time()
@@ -19,10 +25,6 @@ def main():
             
         ## close the sound
         os.system("shutdown now")
-        return
-    else:
-        ##print("Bienvenue à la maison, Maxime !")
-        playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
 
 if __name__ == "__main__":
     main()
