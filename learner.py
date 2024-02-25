@@ -1,46 +1,37 @@
 import os
 import cv2
 import numpy as np
+import concurrent.futures
+
+target_size = (1000, 1000)
+
+def load_image(image_path):
+    current_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    return cv2.resize(current_image, target_size).astype(np.float32)
 
 def learn():
-
     path = '/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/'
-
+    
     try:
-        os.remove(path + 'averageImage.jpg')
-    except:
+        os.remove(os.path.join(path, 'averageImage.jpg'))
+    except FileNotFoundError:
         pass
 
     myList = os.listdir(path)
-
-    print(myList)
-
+    
     target_size = (1000, 1000)
-    averageImage = np.zeros(target_size, np.float32)
-    count = 0
+    
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        images = list(executor.map(load_image, [os.path.join(path, img) for img in myList]))
 
-    for img in myList:
-        current_image_path = os.path.join(path, img)
-        current_image = cv2.imread(current_image_path, cv2.IMREAD_GRAYSCALE)
+    averageImage = np.mean(images, axis=0).astype(np.uint8)
 
-        # Resize current_image to match the target size
-        current_image = cv2.resize(current_image, target_size)
+    center_x, center_y = target_size[1] // 2, target_size[0] // 2
+    radius_x, radius_y = 300, 900
+    mask = np.zeros_like(averageImage)
+    cv2.ellipse(mask, (center_x, center_y), (radius_x, radius_y), 0, 0, 360, 255, thickness=cv2.FILLED)
+    averageImage = cv2.subtract(averageImage, 90 * (mask / 255).astype(np.uint8))
 
-        averageImage = cv2.add(averageImage, current_image.astype(np.float32))
-        count += 1
-
-    averageImage = (averageImage / count).astype(np.uint8)
-
-    # Create a dark oval mask
-    mask = np.zeros(target_size, np.uint8)
-    center = (target_size[1] // 2, target_size[0] // 2)
-    axes = (int(target_size[1] * 0.4), int(target_size[0] * 0.6))
-    cv2.ellipse(mask, center, axes, 0, 0, 360, 255, -1)
-
-    # Apply the mask to the average image
-    darkenedImage = cv2.bitwise_and(averageImage, averageImage, mask=mask)
-
-    # Save the result
-    cv2.imwrite('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/averageImage.jpg', darkenedImage)
+    cv2.imwrite(os.path.join(path, 'averageImage.jpg'), averageImage)
 
 learn()

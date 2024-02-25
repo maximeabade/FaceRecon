@@ -13,7 +13,7 @@ from matplotlib import pyplot as plt
 
 
 
-def capture_et_reconnaissance(authorizedDelta=20):
+def capture_et_reconnaissance(authorizedDelta=12):
     """
     Fonction qui gère la capture d'images et la reconnaissance faciale.
 
@@ -23,38 +23,36 @@ def capture_et_reconnaissance(authorizedDelta=20):
     Returns:
         None.
     """
-    try : 
-        # On charge l'image moyenne
-        load_dotenv()
-        path = os.getenv('meanImagePATH')
-        averageImage = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    # On charge l'image moyenne
+    load_dotenv()
+    path = os.getenv('meanImagePATH')
+    averageImage = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 
         # On initialise la webcam
-        vs = VideoStream(src=0).start()
-
+    vs = VideoStream(src=0).start()
         # On initialise le temps
-        start = datetime.now()
+    start = datetime.now()
 
         # On initialise le nombre de photos prises
-        nbPhotos = 0
+    nbPhotos = 0
 
         # On initialise la variable de sortie
-        output = False
+    output = False
 
         # On initialise les dataframes pour stocker les résultats
-        df_results = pd.DataFrame(columns=['image', 'error'])
+    df_results = pd.DataFrame(columns=['image', 'error'])
 
-        def crop_center(image, target_height, target_width):
+    def crop_center(image, target_height, target_width):
             h, w = image.shape
             start_h = (h - target_height) // 2
             start_w = (w - target_width) // 2
             return image[start_h:start_h + target_height, start_w:start_w + target_width]
 
         # On crée une fenêtre pour l'affichage en temps réel
-        cv2.namedWindow("Webcam Feed", cv2.WINDOW_NORMAL)
-        confusion_matrix_globale = np.zeros((2, 2), dtype=int)
+    cv2.namedWindow("Webcam Feed", cv2.WINDOW_NORMAL)
+    confusion_matrix_globale = np.zeros((2, 2), dtype=int)
 
-        while datetime.now() - start < timedelta(seconds=10) and output == False:
+    while datetime.now() - start < timedelta(seconds=10) and output == False:
             # On prend une photo
             frame = vs.read()
 
@@ -101,6 +99,7 @@ def capture_et_reconnaissance(authorizedDelta=20):
             if error_roi < authorizedDelta:
                 print(f"Match trouvé avec une erreur de {error_roi:.2f} %")
                 output = True
+                break
 
             # On stocke les résultats dans les dataframes
             df_results = df_results._append({'image': image_path, 'error': error_roi}, ignore_index=True)
@@ -111,20 +110,18 @@ def capture_et_reconnaissance(authorizedDelta=20):
             cv2.waitKey(500)  #
 
         # On arrête la capture vidéo
-        vs.stop()
+    vs.stop()
 
         # On détruit la fenêtre à la fin du programme
-        cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
 
         # On affiche les résultats
-        print(f"Nombre de photos prises : {nbPhotos}")
+    print(f"Nombre de photos prises : {nbPhotos}")
 
         # Optionnel : Enregistrement des résultats
         # df_results.to_csv('resultats.csv', index=False)
 
 
-        return output
-    except Exception as e:
-        print(e)
-        return False
+    return output
+
 
