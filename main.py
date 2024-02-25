@@ -27,7 +27,9 @@ def main():
     if(result == False):
         ## print("Intrus détecté")
         ## eteindre l ordinateur
-        os.system("shutdown now")
+        ## os.system("shutdown now")
+        print("Intrus détecté")
+        
     else:
         print("Bienvue à la maison, Maxime !")
         ## lecture du message de bienvenue "bonjour.mp3"
