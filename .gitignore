@@ -7,3 +7,4 @@
 idea.txt
 todo.txt
 .env
+__pycache__
