@@ -5,7 +5,6 @@ from learner import learn
 import time
 
 def main():
-    language = 'fr'
     learn()
     result = capture_et_reconnaissance()
 
