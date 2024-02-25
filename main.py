@@ -17,8 +17,9 @@ def main():
         start_time = time.time()
         while time.time() - start_time < 10:
             playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
+            
         ## close the sound
-        
+        os.system("shutdown now")
         return
     else:
         ##print("Bienvenue à la maison, Maxime !")
