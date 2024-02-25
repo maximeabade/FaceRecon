@@ -26,8 +26,8 @@ def main():
     
     if(result == False):
         ## print("Intrus détecté")
-        ## verrouiller l ecran
-        os.system("gnome-screensaver-command --lock")
+        ## eteindre l ordinateur
+        os.system("shutdown now")
     else:
         print("Bienvue à la maison, Maxime !")
         ## lecture du message de bienvenue "bonjour.mp3"
