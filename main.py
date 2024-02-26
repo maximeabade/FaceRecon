@@ -16,19 +16,19 @@ def main():
         if result:
             ## faire une pause de 20 secondes pour laisser le temps à la personne de rentrer
             
-            ##playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
+            playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
             print("Bienvenue à la maison, Maxime !")
 
 
         elif not result:
-            ##print("Intrus détecté")
+            print("Intrus détecté")
             ## for 10 seconds play the alarm sound
             start_time = time.time()
             while time.time() - start_time < 10:
-                ##playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
+                playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
                 print("Intrus détecté")    
             ## close the sound
-            os.system("shutdown now")
+            ##os.system("shutdown now") ##in comments while at school for tests
 
     except Exception as e:
         print(f"An error occurred: {e}")
