@@ -11,23 +11,21 @@ def main():
         result = capture_et_reconnaissance()
         start_time = time.time()
 
-        os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
+        ##os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*") ## mise en commentaire pour analyser les photos prises pdt la reconnaissance
 
-        if result:
-            ## faire une pause de 20 secondes pour laisser le temps à la personne de rentrer
-            
+        if result:            
             playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
             print("Bienvenue à la maison, Maxime !")
-
+            ## os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
 
         elif not result:
             print("Intrus détecté")
-            ## for 10 seconds play the alarm sound
+            ## for 7 seconds play the alarm sound
             start_time = time.time()
-            while time.time() - start_time < 10:
+            while time.time() - start_time < 7:
                 playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
                 print("Intrus détecté")    
-            ## close the sound
+                ## os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
             ##os.system("shutdown now") ##in comments while at school for tests
 
     except Exception as e:
