@@ -3,6 +3,9 @@
 ## Introduction
 This project is a simple face recognition system using OpenCV and Python. The system uses the Haar Cascade Classifier to detect faces in the video feed. The detected faces are then compared with the faces in the database. If a match is found, the device keeps the screen unlocked. If no match is found, the device is down.
 
+## PAY ATTENTION
+This project is still on full - time upgrading, dont judge too hard. 
+
 ## Requirements
 Python 3.10
 

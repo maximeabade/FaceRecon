@@ -25,8 +25,8 @@ def main():
             while time.time() - start_time < 5:
                 playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
                 print("Intrus détecté")    
-                ## os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
-            ##os.system("shutdown now") ##in comments while at school for tests
+                os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
+                ## os.system("shutdown now") ##in comments while at school for tests
             ## au lieu de shutdown, faire un lock
             os.system("gnome-screensaver-command -l")
 

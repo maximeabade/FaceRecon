@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 
 
 
-def capture_et_reconnaissance(authorizedDelta=14):
+def capture_et_reconnaissance(authorizedDelta=9):
     """
     Fonction qui gère la capture d'images et la reconnaissance faciale.
 
@@ -106,11 +106,15 @@ def capture_et_reconnaissance(authorizedDelta=14):
             if error_roi < authorizedDelta:
                 print(f"Match trouvé avec une erreur de {error_roi:.2f} %")
                 output = True
+                ## renforcement de la reconnaissance
+                ## on ajoute l image correspondante a la base de donnees
+                ##
+                cv2.imwrite(f'/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/definitives/{timestamp}.png', current_image_face)
                 break
 
             # On stocke les résultats dans les dataframes
             df_results = df_results._append({'image': image_path, 'error': error_roi}, ignore_index=True)
-
+            print("pourcentage d erreur : " , error_roi)
             
             # On affiche la webcam en temps réel
             cv2.imshow("Webcam Feed", frame)
