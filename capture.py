@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 
 
 
-def capture_et_reconnaissance(authorizedDelta=9):
+def capture_et_reconnaissance(authorizedDelta=15):
     """
     Fonction qui gère la capture d'images et la reconnaissance faciale.
 
