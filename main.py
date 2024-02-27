@@ -14,7 +14,7 @@ def main():
         ##os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*") ## mise en commentaire pour analyser les photos prises pdt la reconnaissance
 
         if result:            
-            ##playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
+            playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/bonjour.mp3', True)
             print("Bienvenue à la maison, Maxime !")
             os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
 
@@ -23,7 +23,7 @@ def main():
             ## for 7 seconds play the alarm sound
             start_time = time.time()
             while time.time() - start_time < 5:
-                ##playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
+                playsound.playsound('/home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/intrus.mp3', True)
                 print("Intrus détecté")    
                 os.system("rm /home/max/Bureau/Work/Perso/PROJECTS/FaceRecon/images/temp/*")
                 ## os.system("shutdown now") ##in comments while at school for tests
